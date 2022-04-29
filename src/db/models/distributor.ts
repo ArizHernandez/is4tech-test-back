@@ -4,7 +4,7 @@ import { sequelize } from '../config';
 import {
   Distributors as DistributorsAttributes,
   DistributorsInput,
-} from '../dto/distributors';
+} from '../dto/distributor';
 
 export default class Distributors extends Model<
   DistributorsAttributes,

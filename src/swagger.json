@@ -13,6 +13,12 @@
     }
   ],
   "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
     "schemas": {
       "error": {
         "type": "object",
@@ -23,6 +29,55 @@
           },
           "message": {
             "type": "string"
+          }
+        }
+      },
+
+      "user": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+
+      "login": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "user": {
+                "type": "string"
+              },
+              "token": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+
+      "signup": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "user": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -125,16 +180,155 @@
             "required": true
           }
         }
+      },
+
+      "authorizatedChannel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "distributor_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+
+      "authorizatedChannelBody": {
+        "type": "object",
+        "properties": {
+          "distributor_id": {
+            "type": "integer",
+            "format": "int64",
+            "required": true
+          },
+          "code": {
+            "type": "string",
+            "required": true
+          },
+          "name": {
+            "type": "string",
+            "required": true
+          }
+        }
       }
     }
   },
   "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Login",
+        "description": "Login",
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/user"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/login"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid username/password supplied"
+          },
+          "500": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/sign-up": {
+      "post": {
+        "tags": ["auth"],
+        "summary": "Sign Up",
+        "description": "Sign up",
+        "operationId": "signUp",
+        "requestBody": {
+          "description": "Sign up",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/user"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "user created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/signup"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid username/password supplied"
+          },
+          "500": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/distributors": {
       "get": {
         "tags": ["distributor"],
         "summary": "List all distributors",
         "description": "List all distributors",
         "operationId": "getDistributors",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "A list of distributors",
@@ -157,6 +351,11 @@
         "summary": "Create a new distributor",
         "description": "Create a new distributor",
         "operationId": "createDistributor",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "description": "Distributor to create",
           "required": true,
@@ -198,6 +397,11 @@
         "summary": "Get a distributor",
         "description": "Get a distributor",
         "operationId": "getDistributor",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -239,6 +443,11 @@
         "summary": "Update a distributor",
         "description": "Update a distributor",
         "operationId": "updateDistributor",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -268,6 +477,11 @@
         "summary": "Delete a distributor",
         "description": "Delete a distributor",
         "operationId": "deleteDistributor",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -303,6 +517,11 @@
         "summary": "Get All products",
         "description": "Get all products in an array",
         "operationId": "getProducts",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "products response success",
@@ -339,6 +558,11 @@
         "summary": "Create a product",
         "description": "Create a product",
         "operationId": "createProduct",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -393,6 +617,11 @@
         "summary": "Get a product",
         "description": "Get a product",
         "operationId": "getProduct",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -433,6 +662,11 @@
         "summary": "Update a product",
         "description": "Update a product",
         "operationId": "updateProduct",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -508,6 +742,11 @@
         "summary": "Delete a product",
         "description": "Delete a product",
         "operationId": "deleteProduct",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -526,6 +765,293 @@
           },
           "404": {
             "description": "Product not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/authorizated-channels": {
+      "get": {
+        "tags": ["authorizated-channels"],
+        "summary": "Get All authorizated channels",
+        "description": "Get all authorizated channels in an array",
+        "operationId": "getAuthorizatedChannels",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "authorizated channels response success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "$ref": "#/components/schemas/authorizatedChannel"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["authorizated-channels"],
+        "summary": "Create a authorizated channel",
+        "description": "Create a authorizated channel",
+        "operationId": "createAuthorizatedChannel",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/authorizatedChannelBody"
+              }
+            }
+          },
+          "description": "Authorizated channel object that needs to be added"
+        },
+        "responses": {
+          "201": {
+            "description": "Authorizated channel created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "$ref": "#/components/schemas/authorizatedChannel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid authorizated channel supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/authorizated-channels/:id": {
+      "get": {
+        "tags": ["authorizated-channels"],
+        "summary": "Get a authorizated channel",
+        "description": "Get a authorizated channel",
+        "operationId": "getAuthorizatedChannel",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of authorizated channel that needs to be fetched",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authorizated channel found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "$ref": "#/components/schemas/authorizatedChannel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Authorizated channel not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["authorizated-channels"],
+        "summary": "Update a authorizated channel",
+        "description": "Update a authorizated channel",
+        "operationId": "updateAuthorizatedChannel",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of authorizated channel that needs to be updated",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/authorizatedChannelBody"
+              }
+            }
+          },
+          "description": "Updated authorizated channel object"
+        },
+        "responses": {
+          "200": {
+            "description": "Authorizated channel updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "$ref": "#/components/schemas/authorizatedChannel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid authorizated channel supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Authorizated channel not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["authorizated-channels"],
+        "summary": "Delete a authorizated channel",
+        "description": "Delete a authorizated channel",
+        "operationId": "deleteAuthorizatedChannel",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of authorizated channel that needs to be deleted",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authorizated channel deleted"
+          },
+          "404": {
+            "description": "Authorizated channel not found",
             "content": {
               "application/json": {
                 "schema": {
