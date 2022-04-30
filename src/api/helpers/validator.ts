@@ -11,7 +11,7 @@ const validate = (
 
     if (error) {
       res.status(400).json({
-        message: 'BAD-REQUEST',
+        message: `${property}-INVALID`,
         error: error.details,
       });
     }
