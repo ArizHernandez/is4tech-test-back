@@ -7,7 +7,7 @@ import validateHandler from '../helpers/validator';
 
 const validateObj = Joi.object().keys({
   user: Joi.string().required(),
-  password: Joi.string().required(),
+  password: Joi.string().required().length(6),
 });
 
 const router = Router();

@@ -13,7 +13,7 @@ export const login: RequestHandler = async (req, res, next) => {
     const user = await service.login(payload);
 
     res.status(201).json({
-      message: 'LOGIN_SUCCESS',
+      message: 'LOGIN-SUCCESS',
       data: user,
     });
   } catch (error) {
@@ -31,7 +31,7 @@ export const signup: RequestHandler = async (req, res, next) => {
     const user = await service.signup(payload);
 
     res.status(201).json({
-      message: 'CREATED_SUCCESS',
+      message: 'CREATED-SUCCESS',
       data: user,
     });
   } catch (error) {

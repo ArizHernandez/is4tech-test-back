@@ -26,7 +26,7 @@ export const create: RequestHandler = async (req, res, next) => {
     const authorizatedCreated = await service.create(payload);
 
     res.status(201).json({
-      message: 'CREATED_SUCCESS',
+      message: 'CREATED-SUCCESS',
       data: authorizatedCreated,
     });
   } catch (error) {
@@ -46,7 +46,7 @@ export const update: RequestHandler = async (req, res, next) => {
     const authorizatedUpdated = await service.update(id, payload);
 
     res.status(200).json({
-      message: 'PUT_SUCCESS',
+      message: 'PUT-SUCCESS',
       data: authorizatedUpdated,
     });
   } catch (error) {
@@ -61,7 +61,7 @@ export const deleteById: RequestHandler = async (req, res, next) => {
     const authorizatedDeleted = await service.deleteById(id);
 
     res.status(200).json({
-      message: 'DELETE_SUCCESS',
+      message: 'DELETE-SUCCESS',
       deleted: authorizatedDeleted,
     });
   } catch (error) {
@@ -76,7 +76,7 @@ export const getById: RequestHandler = async (req, res, next) => {
     const authorizatedItem = await service.getById(id);
 
     res.status(200).json({
-      message: 'FIND_ID_SUCCCESS',
+      message: 'FIND-ID-SUCCCESS',
       data: authorizatedItem,
     });
   } catch (error) {
