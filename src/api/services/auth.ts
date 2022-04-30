@@ -41,6 +41,15 @@ export const login = async (payload: UserInput) => {
 };
 
 export const signup = async (payload: UserInput) => {
+  const user = await userDal.getByUser(payload.user);
+
+  if (user) {
+    const error: ErrorHandler = new Error('USER-EXIST');
+    error.statusCode = 400;
+
+    throw error;
+  }
+
   const encryptedPass = AES.encrypt(payload.password, secretKey);
 
   const encryptedPayload = {
