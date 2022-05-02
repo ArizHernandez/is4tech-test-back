@@ -1,0 +1,59 @@
+{
+  "WELCOME": "Welcome 🎉",
+  "WELCOME-BACK": "Welcome Back 👋",
+  "OR": "or",
+  "CREATED-SUCCESS": "Created successfully 🎉",
+  "NOT-FOUND": "Not found or not exist 🤔",
+  "EXAMPLE": "Example",
+  "USER-CREATED": "User created successfully 🎉",
+  "NOT-USER-VALID": "User not valid 🚫",
+  "NAME": "Name",
+  "CODE": "Code",
+  "DELETE-SUCCESS": "Deleted successfully!!",
+  "PUT-SUCCESS": "Updated successfully!!",
+  "form": {
+    "ADD-NEW": "Add new record",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "CREATE": "Create"
+  },
+  "auth": {
+    "LOGIN": "Login",
+    "SIGNUP": "Signup",
+    "USER": "User",
+    "PASSWORD": "Password",
+    "CONFIRM-PASSWORD": "Confirm password",
+    "FORGOT-PASSWORD": "Forgot password?",
+    "RECOVER-PASSWORD": "Recover password",
+    "REMEMBER-ME": "Remember me",
+    "LOGOUT": "Logout",
+    "CREATE-ACCOUNT": "Create account",
+    "BOTH-PASSWORDS-MUST-MATCH": "Both passwords must match"
+  },
+  "routes": {
+    "HOME": "Home",
+    "DISTRIBUTORS": "Distributors",
+    "PRODUCTS": "Products",
+    "AUTHORIZATEDCHANNELS": "Authorized channels"
+  },
+  "distributors": {
+    "TITLE": "Distributors",
+    "SINGLE-TITLE": "Distributor",
+    "EMAIL-NOTIFICATE": "Email to notify",
+    "EMAIL-ALERT": "Email to alert"
+  },
+  "products": {
+    "TITLE": "Products",
+    "SINGLE-TITLE": "Product",
+    "AMOUNT": "Amount",
+    "DISTRIBUTOR": "Distributor",
+    "DESCRIPTION": "Description"
+  },
+  "authorizated-channels": {
+    "TITLE": "Authorizated channels",
+    "SINGLE-TITLE": "Authorizated channel",
+    "DISTRIBUTOR": "Distributor"
+  }
+}

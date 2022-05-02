@@ -1,0 +1,59 @@
+{
+  "WELCOME": "Bienvenido 🎉",
+  "WELCOME-BACK": "Bienvenido de nuevo 👋",
+  "OR": "o",
+  "CREATED-SUCCESS": "Creado exitosamente 🎉",
+  "NOT-FOUND": "No se ha encontrado o no existe 🤔",
+  "EXAMPLE": "Ejemplo",
+  "USER-CREATED": "Usuario creado exitosamente 🎉",
+  "NOT-USER-VALID": "Usuario no valido 🚫",
+  "NAME": "Nombre",
+  "CODE": "Código",
+  "DELETE-SUCCESS": "Borrado exitosamente!!",
+  "PUT-SUCCESS": "Editado exitosamente!!",
+  "form": {
+    "ADD-NEW": "Crear un nuevo registro",
+    "EDIT": "Editar",
+    "DELETE": "Eliminar",
+    "SAVE": "Guardar",
+    "CANCEL": "Cancelar",
+    "CREATE": "Crear"
+  },
+  "auth": {
+    "LOGIN": "Iniciar sesión",
+    "SIGNUP": "Registrarse",
+    "USER": "Usuario",
+    "PASSWORD": "Contraseña",
+    "CONFIRM-PASSWORD": "Confirmar contraseña",
+    "FORGOT-PASSWORD": "¿Olvidaste tu contraseña?",
+    "RECOVER-PASSWORD": "Recuperar contraseña",
+    "REMEMBER-ME": "Recordarme",
+    "LOGOUT": "Cerrar sesión",
+    "CREATE-ACCOUNT": "Crear cuenta",
+    "BOTH-PASSWORDS-MUST-MATCH": "Ambas contraseñas deben coincidir"
+  },
+  "routes": {
+    "HOME": "Home",
+    "DISTRIBUTORS": "Distribuidores",
+    "PRODUCTS": "Productos",
+    "AUTHORIZATEDCHANNELS": "Canales autorizados"
+  },
+  "distributors": {
+    "TITLE": "Distribuidores",
+    "SINGLE-TITLE": "Distribuidor",
+    "EMAIL-NOTIFICATE": "Email de notificación",
+    "EMAIL-ALERT": "Email de alerta"
+  },
+  "products": {
+    "TITLE": "Productos",
+    "SINGLE-TITLE": "Producto",
+    "AMOUNT": "Monto",
+    "DISTRIBUTOR": "Distribuidor",
+    "DESCRIPTION": "Descripción"
+  },
+  "authorizated-channels": {
+    "TITLE": "Canales autorizados",
+    "SINGLE-TITLE": "Canal autorizado",
+    "DISTRIBUTOR": "Distribuidor"
+  }
+}
