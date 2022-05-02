@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import AuthorizatedChannel from '../models/authorizatedChannel';
 import Distributors from '../models/distributor';
 
@@ -5,11 +6,16 @@ import { AuthorizatedChannelInput } from '../dto/authorizatedChannel';
 import { ErrorHandler } from '../../api/helpers/errorHandler';
 
 export const getAll = () => {
-  return AuthorizatedChannel.findAll({ order: [['id', 'DESC']] });
+  return AuthorizatedChannel.findAll({
+    order: [['id', 'DESC']],
+    include: [{ all: true }],
+  });
 };
 
 export const getById = async (id: string) => {
-  const item = await AuthorizatedChannel.findByPk(id);
+  const item = await AuthorizatedChannel.findByPk(id, {
+    include: [{ all: true }],
+  });
 
   if (!item) {
     const error: ErrorHandler = new Error('NOT-FOUND');
@@ -33,7 +39,7 @@ export const create = async (payload: AuthorizatedChannelInput) => {
 
   const result = await AuthorizatedChannel.create(payload);
 
-  return result;
+  return { ...(result as any).dataValues, distributor: distributorExist };
 };
 
 export const update = async (id: string, payload: AuthorizatedChannelInput) => {
@@ -57,7 +63,8 @@ export const update = async (id: string, payload: AuthorizatedChannelInput) => {
   }
 
   const result = await item.update(payload);
-  return result;
+
+  return { ...(result as any).dataValues, distributor: distributorExist };
 };
 
 export const deletById = async (id: string) => {

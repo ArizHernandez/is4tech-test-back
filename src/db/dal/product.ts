@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Distributors from '../models/distributor';
 import Product from '../models/product';
 
@@ -5,11 +6,11 @@ import { ErrorHandler } from '../../api/helpers/errorHandler';
 import { ProductInput } from '../dto/product';
 
 export const getAll = () => {
-  return Product.findAll({ order: [['id', 'DESC']] });
+  return Product.findAll({ order: [['id', 'DESC']], include: [{ all: true }] });
 };
 
 export const getById = async (id: string) => {
-  const item = await Product.findByPk(id);
+  const item = await Product.findByPk(id, { include: [{ all: true }] });
 
   if (!item) {
     const error: ErrorHandler = new Error('NOT-FOUND');
@@ -32,7 +33,7 @@ export const create = async (payload: ProductInput) => {
   }
 
   const result = await Product.create(payload);
-  return result;
+  return { ...(result as any).dataValues, distributor: distributorExist };
 };
 
 export const update = async (id: string, payload: ProductInput) => {
@@ -56,7 +57,8 @@ export const update = async (id: string, payload: ProductInput) => {
   }
 
   const result = await item.update(payload);
-  return result;
+
+  return { ...(result as any).dataValues, distributor: distributorExist };
 };
 
 export const deletById = async (id: string) => {

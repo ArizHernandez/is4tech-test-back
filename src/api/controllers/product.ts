@@ -40,7 +40,7 @@ export const update: RequestHandler = async (req, res, next) => {
   const payload: ProductInput = {
     distributor_id: req.body.distributor_id,
     code: req.body.code,
-    description: req.body.code,
+    description: req.body.description,
     amount: req.body.amount,
   };
 

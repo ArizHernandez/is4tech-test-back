@@ -141,9 +141,15 @@
             "type": "integer",
             "format": "int64"
           },
+          "code": {
+            "type": "string"
+          },
           "distributor_id": {
             "type": "integer",
             "format": "int64"
+          },
+          "distributor": {
+            "$ref": "#/components/schemas/distributor"
           },
           "description": {
             "type": "string"
@@ -171,6 +177,9 @@
             "format": "int64",
             "required": true
           },
+          "code": {
+            "type": "string"
+          },
           "description": {
             "type": "string"
           },
@@ -192,6 +201,9 @@
           "distributor_id": {
             "type": "integer",
             "format": "int64"
+          },
+          "distributor": {
+            "$ref": "#/components/schemas/distributor"
           },
           "description": {
             "type": "string"
@@ -452,7 +464,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/distributorBody"
+                "$ref": "#/components/schemas/distributor"
               }
             }
           },
@@ -586,10 +598,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "id": {
-                    "type": "integer",
-                    "format": "int64"
-                  },
                   "$ref": "#/components/schemas/product"
                 }
               }
@@ -702,10 +710,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "id": {
-                    "type": "integer",
-                    "format": "int64"
-                  },
                   "$ref": "#/components/schemas/product"
                 }
               }
@@ -871,10 +875,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "id": {
-                    "type": "integer",
-                    "format": "int64"
-                  },
                   "$ref": "#/components/schemas/authorizatedChannel"
                 }
               }
@@ -932,10 +932,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "id": {
-                    "type": "integer",
-                    "format": "int64"
-                  },
                   "$ref": "#/components/schemas/authorizatedChannel"
                 }
               }
@@ -989,7 +985,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/authorizatedChannelBody"
+                "$ref": "#/components/schemas/authorizatedChannel"
               }
             }
           },

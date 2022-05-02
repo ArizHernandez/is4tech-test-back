@@ -1,7 +1,8 @@
 # Test-Node App
   ## Pasos importates por hacer para que el programa corra correctamente:
   - Instalar los node_modules con `npm install` 
-  - Para compilar el código usar `npm run tsc` 
+  - Para correr como producción user `npm start` 
+  - Para compilar el código usar `npm run build` 
   - Para correr como Dev usar `npm run dev` 
   - Para correr los test usar `npm test`
 
