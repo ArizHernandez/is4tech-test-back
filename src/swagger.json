@@ -10,6 +10,10 @@
     {
       "url": "http://localhost:8080/api",
       "description": "Local server"
+    },
+    {
+      "url": "http://45.58.56.30:8080/api",
+      "description": "Prod server"
     }
   ],
   "components": {
