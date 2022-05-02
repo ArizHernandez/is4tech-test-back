@@ -33,19 +33,19 @@ Distributors.init(
       primaryKey: true,
     },
     code: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(125),
       allowNull: false,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(125),
       allowNull: false,
     },
     email_notificate: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(125),
       allowNull: false,
     },
     email_alert: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(125),
       allowNull: false,
     },
   },

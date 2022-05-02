@@ -30,11 +30,11 @@ AuthorizatedChannel.init(
       primaryKey: true,
     },
     code: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(125),
       allowNull: false,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(125),
     },
   },
   {

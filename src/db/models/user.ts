@@ -23,12 +23,12 @@ User.init(
       primaryKey: true,
     },
     user: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(125),
       allowNull: false,
       unique: true,
     },
     password: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(125),
       allowNull: false,
     },
   },
