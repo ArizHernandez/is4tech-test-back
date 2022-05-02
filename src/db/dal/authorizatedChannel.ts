@@ -5,7 +5,7 @@ import { AuthorizatedChannelInput } from '../dto/authorizatedChannel';
 import { ErrorHandler } from '../../api/helpers/errorHandler';
 
 export const getAll = () => {
-  return AuthorizatedChannel.findAll();
+  return AuthorizatedChannel.findAll({ order: [['id', 'DESC']] });
 };
 
 export const getById = async (id: string) => {

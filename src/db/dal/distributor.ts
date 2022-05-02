@@ -4,7 +4,7 @@ import { DistributorsInput } from '../dto/distributor';
 import { ErrorHandler } from '../../api/helpers/errorHandler';
 
 export const getAll = () => {
-  return Distributor.findAll();
+  return Distributor.findAll({ order: [['id', 'DESC']] });
 };
 
 export const getById = async (id: string) => {

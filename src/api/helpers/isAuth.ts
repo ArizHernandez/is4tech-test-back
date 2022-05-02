@@ -12,6 +12,7 @@ const isAuth = (req: any, res: any, next: any) => {
 
   if (NODE_ENV === 'test') {
     next();
+    return;
   }
 
   try {

@@ -5,7 +5,7 @@ import { ErrorHandler } from '../../api/helpers/errorHandler';
 import { ProductInput } from '../dto/product';
 
 export const getAll = () => {
-  return Product.findAll();
+  return Product.findAll({ order: [['id', 'DESC']] });
 };
 
 export const getById = async (id: string) => {
