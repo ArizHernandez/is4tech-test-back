@@ -62,7 +62,7 @@ export const deleteById: RequestHandler = async (req, res, next) => {
 
     res.status(200).json({
       message: 'DELETE-SUCCESS',
-      deleted: authorizatedDeleted,
+      data: authorizatedDeleted,
     });
   } catch (error) {
     next(error);

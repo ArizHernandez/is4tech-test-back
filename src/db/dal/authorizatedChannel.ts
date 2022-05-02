@@ -71,5 +71,5 @@ export const deletById = async (id: string) => {
   }
 
   await item.destroy();
-  return true;
+  return item;
 };

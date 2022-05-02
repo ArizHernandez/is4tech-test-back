@@ -64,7 +64,7 @@ export const deleteById: RequestHandler = async (req, res, next) => {
 
     res.status(200).json({
       message: 'DELETE-SUCCESS',
-      deleted: deletedProduct,
+      data: deletedProduct,
     });
   } catch (error) {
     next(error);

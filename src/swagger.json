@@ -495,8 +495,15 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Distributor deleted"
+          "201": {
+            "description": "Distributor created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/distributor"
+                }
+              }
+            }
           },
           "404": {
             "description": "Distributor not found",
@@ -761,7 +768,18 @@
         ],
         "responses": {
           "200": {
-            "description": "Product deleted"
+            "description": "Product updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "$ref": "#/components/schemas/product"
+                }
+              }
+            }
           },
           "404": {
             "description": "Product not found",
@@ -1048,7 +1066,18 @@
         ],
         "responses": {
           "200": {
-            "description": "Authorizated channel deleted"
+            "description": "Authorizated channel updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "$ref": "#/components/schemas/authorizatedChannel"
+                }
+              }
+            }
           },
           "404": {
             "description": "Authorizated channel not found",
